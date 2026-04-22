@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CoolFlow</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#0a0a0a;color:white;overflow-x:hidden}
+
+/* NAVBAR */
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+padding:15px 50px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(10px);
+z-index:1000;
+}
+nav a{
+color:white;
+text-decoration:none;
+margin:0 15px;
+position:relative;
+transition:0.3s;
+}
+nav a::after{
+content:"";
+position:absolute;
+bottom:-5px;
+left:0;
+width:0;
+height:2px;
+background:#00f0ff;
+transition:0.3s;
+}
+nav a:hover{
+color:#00f0ff;
+}
+nav a:hover::after{
+width:100%;
+}
+
+/* HERO WITH VIDEO BACKGROUND */
+.hero{
+position:relative;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+overflow:hidden;
+}
+
+.hero iframe{
+position:absolute;
+top:50%;
+left:50%;
+width:177.77vh; /* 16:9 ratio */
+height:100vh;
+transform:translate(-50%, -50%);
+pointer-events:none;
+filter:brightness(0.4);
+}
+
+.hero h1{
+position:relative;
+font-size:60px;
+z-index:2;
+animation:fadeIn 2s ease;
+}
+
+/* PARALLAX */
+.parallax{
+height:400px;
+background:url('/mnt/data/7997765c-56be-47df-b4fd-ef92b160204a.jpg') no-repeat center/cover;
+background-attachment:fixed;
+}
+
+/* SECTION */
+.section{
+padding:100px 50px;
+text-align:center;
+}
+
+.card{
+margin-top:30px;
+padding:20px;
+border-radius:20px;
+background:#111;
+transition:0.4s;
+}
+.card:hover{
+transform:translateY(-10px) scale(1.03);
+box-shadow:0 0 20px #00f0ff;
+}
+
+/* VIDEO */
+.video-container{
+margin-top:30px;
+transition:0.4s;
+}
+.video-container:hover{
+transform:scale(1.05);
+}
+iframe.normal{
+border-radius:20px;
+}
+
+/* FOOTER */
+footer{
+padding:20px;
+text-align:center;
+background:#000;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
+}
+
+/* SCROLL ANIMATION */
+.hidden{opacity:0;transform:translateY(50px);transition:1s}
+.show{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav>
+<div><b>CoolFlow</b></div>
+<div>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#gallery">Gallery</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero" id="home">
+<!-- Background YouTube Video -->
+<iframe src="https://www.youtube.com/embed/pWfCrSAuckg?autoplay=1&mute=1&loop=1&playlist=pWfCrSAuckg&controls=0&showinfo=0&modestbranding=1"></iframe>
+<h1></h1>
+</section>
+
+<div class="parallax"></div>
+
+<section class="section hidden" id="about">
+<h2>About CoolFlow</h2>
+<p>Cool Flow is a premier multi-media and musical collective established in the vibrant heart of Cebu, Philippines. Formed in early 2023, the group was born from a shared vision among student-artists at Rosemont Hills Montessori College in Danao City.
+
+What started as a campus collaboration quickly flowed into the local scene, specializing in high-fidelity live performances, cinematic visual storytelling, and curated soundtracks for life's biggest milestones.</p>
+<p></p>
+
+<div class="video-container">
+<iframe class="normal" width="560" height="315" src="https://www.youtube.com/embed/pWfCrSAuckg" frameborder="0" allowfullscreen></iframe>
+</div>
+</section>
+
+<section class="section hidden" id="gallery">
+<h2>Our Works</h2>
+
+<div class="video-container">
+<iframe class="normal" width="560" height="315" src="https://www.youtube.com/embed/a1cikncJrsE" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class="video-container">
+<iframe class="normal" width="560" height="315" src="https://www.youtube.com/embed/SFfSmUxTI_k" frameborder="0" allowfullscreen></iframe>
+</div>
+
+<div class="video-container">
+<iframe class="normal" width="560" height="315" src="https://www.youtube.com/embed/BrhBYf4gvQg" frameborder="0" allowfullscreen></iframe>
+</div>
+
+</section>
+
+<section class="section hidden" id="contact">
+<h2>Contact Us</h2>
+<p>Email: coolflow@email.com</p>
+<p>PayPal: eladebarras@gmail.com</p>
+<p>GCash: +639276266914</p>
+</section>
+
+<footer>
+<p>© 2026 CoolFlow</p>
+</footer>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.classList.add('show');
+}
+});
+});
+
+document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
